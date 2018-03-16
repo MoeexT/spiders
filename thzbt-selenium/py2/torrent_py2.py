@@ -10,7 +10,7 @@ from selenium import webdriver as wd
 from selenium.webdriver.common.keys import Keys
 
 
-domain = "http://thzvv.com/"
+domain = "http://*****.com/" # 这里的域名已和谐
 main_url = domain + "forum.php"
 annex_url = domain + "forum-220-1.html"
 
@@ -103,7 +103,7 @@ def main():
 	下载有码的，页面数为硬编码
 	'''
 	for i in range(13,354):
-		article_list = get_article_list("http://thzvv.com/forum-220-" + str(i) + ".html") 
+		article_list = get_article_list("http://*****.com/forum-220-" + str(i) + ".html") # 这里的域名已和谐
 		for link in article_list:
 			print "\ndownloading the " + str(count) + "(st) torrent..."
 			get_resource(link, browser=chrome)# flag=true, make the Chrome-Object
