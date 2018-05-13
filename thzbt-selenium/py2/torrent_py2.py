@@ -33,7 +33,7 @@ def get_article_list(url):
 	
 def get_cover(browser=None):
 	'''
-	获得封面链接
+	获得cover链接
 	'''
 	img_list = browser.find_elements_by_class_name('zoom')
 	img_src = img_list[0].get_attribute('src')
@@ -43,7 +43,7 @@ def get_cover(browser=None):
 	
 def get_torrent(browser=None):
 	'''
-	获得种子链接
+	获得torrent链接
 	'''
 	while True:
 		try:
@@ -56,12 +56,12 @@ def get_torrent(browser=None):
 	
 def get_resource(url, browser=None):
 	'''
-	在文章页面里下载封面和种子
+	在文章页面里下载cover和torrent
 	'''
 	browser.get(url)
 	title_ = browser.title
-	video_num = title_[:title_.index(']')+1] # 获得番号，[abc-123]
-	format_video_num = video_num[1:-1] # 格式化番号，abc-123
+	video_num = title_[:title_.index(']')+1] # 获得车牌，[abc-123]
+	format_video_num = video_num[1:-1] # 格式化车牌，abc-123
 	target_dir = 'resource/' + format_video_num[:format_video_num.index('-')] + '/' # 指定目录
 	if not os.path.exists(target_dir): # 判断目录是否存在，否则创建
 		os.mkdir(target_dir)
@@ -71,7 +71,7 @@ def get_resource(url, browser=None):
 	img_name = target_dir + format_video_num + '.jpg'
 	tnt_name = target_dir + format_video_num + '.torrent'
 	'''
-	下载封面
+	下载cover
 	'''
 	browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 	img_src = get_cover(browser=browser)
@@ -85,7 +85,7 @@ def get_resource(url, browser=None):
 
 	wget.download(img_src, out=img_name)
 	'''
-	下载种子
+	下载torrent
 	'''
 	annex_link = browser.find_element_by_xpath("//*[starts-with(@id,'aid')]")
 	annex_link.send_keys(Keys.RETURN)
@@ -100,7 +100,7 @@ def main():
 	chrome = wd.Chrome()
 	
 	'''
-	下载有码的，页面数为硬编码
+	下载骑兵的，页面数为硬编码
 	'''
 	for i in range(13,354):
 		article_list = get_article_list("http://*****.com/forum-220-" + str(i) + ".html") # 这里的域名已和谐

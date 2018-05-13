@@ -10,7 +10,7 @@ from selenium import webdriver as wd
 from selenium.webdriver.common.keys import Keys
 
 
-domain = "http://thzvv.com/"
+domain = "http://*****.com/"
 main_url = domain + "forum.php"
 annex_url = domain + "forum-220-1.html"
 
@@ -33,8 +33,8 @@ def get_article_list(url):
 def get_resource(url, browser=None):
 	browser.get(url)
 	title_ = browser.title
-	video_num = title_[:title_.index(']')+1] # 获得番号，[abc-123]
-	format_video_num = video_num[1:-1] # 格式化番号，abc-123
+	video_num = title_[:title_.index(']')+1] # 获得车牌，[abc-123]
+	format_video_num = video_num[1:-1] # 格式化车牌，abc-123
 	target_dir = 'resource/' + format_video_num[:format_video_num.index('-')] + '/' # 指定目录
 	if not os.path.exists(target_dir): # 判断目录是否存在，否则创建
 		os.mkdir(target_dir)
@@ -46,14 +46,14 @@ def get_resource(url, browser=None):
 	print (type(img_name), ':', img_name)
 	print (type(tnt_name), ':', tnt_name)
 	'''
-	下载封面
+	下载cover
 	'''
 	img_list = browser.find_elements_by_class_name('zoom')
 	img_src = img_list[0].get_attribute('src')
 	print ('downloading: ', img_src)
 	wget.download(img_src, out=img_name)
 	'''
-	下载种子
+	下载torrent
 	'''
 	annex_link = browser.find_element_by_xpath("//*[starts-with(@id,'aid')]")
 	annex_link.send_keys(Keys.RETURN)

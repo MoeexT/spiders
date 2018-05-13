@@ -8,7 +8,7 @@ from selenium import webdriver as wd
 from selenium.webdriver.common.keys import Keys
 
 index = 0
-url = 'http://thzvv.com/forum.php'
+url = 'http://******/forum.php'  # 和谐
 
 def download(url, proxy=None, num_retries=2):
 	headers = {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}

@@ -13,7 +13,7 @@ url = 'http://thzvv.com/forum.php'
 chrome = wd.Chrome()
 # 进入主页
 chrome.get(url)
-target = chrome.find_element_by_link_text('亚洲有碼原創')
+target = chrome.find_element_by_link_text('***')  # 和谐相关板块名
 target.send_keys(Keys.RETURN) 
 # 进入某模块
 list = chrome.find_element_by_class_name('xst') # 在该页面过滤所有文章
